@@ -14,6 +14,7 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:check": "drizzle-kit check",
+    "generate:mvc": "bunx kirimase@latest generate",
     "test:e2e": "playwright test"
   },
   "dependencies": {
