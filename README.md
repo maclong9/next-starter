@@ -1,10 +1,5 @@
 # Next.js Application Documentation
 
-## TODO
-
-- [ ] Add Component Testing
-- [ ] Add Unit Testing
-
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Project Setup](#project-setup)
