@@ -50,7 +50,7 @@ Kirimase provides a powerful tool for generating new application MVCs (Model-Vie
 
 1. Run the following command:
    ```
-   bunx kirimase@latest generate
+   bun run generate:mvc
    ```
 
 2. Follow the interactive prompts to specify:
