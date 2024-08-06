@@ -14,7 +14,7 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:check": "drizzle-kit check",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@lucia-auth/adapter-drizzle": "^1.1.0",
