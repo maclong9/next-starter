@@ -123,14 +123,6 @@ The project uses Drizzle ORM with PostgreSQL:
 - `src/config`: Configuration files (e.g., navigation)
 - `public`: Static assets
 
-## Development Workflow
-1. Create new components in `src/components`.
-2. Add new pages in `src/app`.
-3. Update database schema in `src/lib/db/schema`.
-4. Run `bun db:generate` after schema changes.
-5. Implement server actions in `src/lib/actions`.
-6. Use the `getUserAuth` function for accessing user session data.
-
 ## Deployment
 1. Ensure all environment variables are set in your deployment platform.
 2. Run database migrations before deploying new versions.
