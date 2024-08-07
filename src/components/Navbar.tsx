@@ -5,11 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { additionalLinks, defaultLinks } from "@/config/nav";
 import { cn } from "@/lib/utils";
@@ -31,7 +27,11 @@ export default function Navbar() {
           </SheetTrigger>
           <SheetContent>
             <ul className="space-y-4 mt-8">
-              <NavLinkGroup links={defaultLinks} setOpen={setOpen} title="Navigation" />
+              <NavLinkGroup
+                links={defaultLinks}
+                setOpen={setOpen}
+                title="Navigation"
+              />
               {additionalLinks.map((group) => (
                 <NavLinkGroup
                   key={group.title}
@@ -79,7 +79,7 @@ function NavLinkGroup({ links, title, setOpen, border }: NavLinkGroupProps) {
               href={link.href}
               className={cn(
                 "flex items-center text-muted-foreground hover:text-primary",
-                pathname === link.href && "text-primary font-semibold"
+                pathname === link.href && "text-primary font-semibold",
               )}
             >
               <link.icon className="mr-2 h-4 w-4" />

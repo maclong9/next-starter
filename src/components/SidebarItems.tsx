@@ -20,13 +20,13 @@ const SidebarItems = () => {
       <SidebarLinkGroup links={defaultLinks} />
       {additionalLinks.length > 0
         ? additionalLinks.map((l) => (
-          <SidebarLinkGroup
-            links={l.links}
-            title={l.title}
-            border
-            key={l.title}
-          />
-        ))
+            <SidebarLinkGroup
+              links={l.links}
+              title={l.title}
+              border
+              key={l.title}
+            />
+          ))
         : null}
     </>
   );
@@ -74,7 +74,7 @@ const SidebarLink = ({
       href={link.href}
       className={cn(
         "group transition-colors p-2 inline-block hover:bg-popover hover:text-primary text-muted-foreground hover:shadow rounded-md w-full",
-        active && "text-primary font-semibold"
+        active && "text-primary font-semibold",
       )}
     >
       <div className="flex items-center">
