@@ -1,5 +1,29 @@
 # Next.js Application Documentation
 
+## TODO
+
+- [ ] Add Search Engine Optimization 
+
+## Tools
+
+### Stack 
+
+- Next.js
+- Drizzle Orm
+- Vercel Postgres
+- Lucia Authentication
+- TailwindCSS
+- shadcn/ui
+- acternity/ui
+- Zod
+
+### Developer Tooling
+
+- ESLint
+- TypeScript
+- Vitest
+- Playwright
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -20,15 +44,29 @@ This is a Next.js application built with Kirimase, utilizing various modern web 
 
 ## Project Setup
 
+### GitHub CLI
+
+1. Run the create command
+``` sh
+gh repo create <project_name> --template maclong9/next-starter
+```
+
+> [!TIP]
+> I personally alias this to `cna` in my `~/.zshrc` allowing me to run `cna <project_name>` whenever I need to start a new project.
+
+### Manually
+
 To set up the project:
 
 1. Clone the repository
-2. Install dependencies:
+
+### Shared
+1. Install dependencies:
    ```
    bun install
    ```
-3. Set up environment variables (copy `.env.example` to `.env.local` and fill in the values)
-4. Run the development server:
+2. Set up environment variables (copy `.env.example` to `.env` and fill in the values)
+3. Run the development server:
    ```
    bun dev
    ```
@@ -43,7 +81,7 @@ Theming is implemented using `theme-colors` for generating Tailwind CSS shades. 
 To apply a custom font:
 
 1. Use the `next/font` library in the root layout file (`src/app/layout.tsx`).
-2. Import and apply the font as shown in the existing layout file.
+2. Import and apply the font as shown in the [documentation](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
 
 ## Adding Modules
 
@@ -51,9 +89,12 @@ To add additional functionality:
 
 1. Use Kirimase to add modules like Stripe (for payments) or Resend (for email):
    ```
-   bunx kirimase@latest add
+   bun add:module <module_name>
    ```
 2. Follow the prompts to select and configure the desired module.
+
+> [!NOTE]
+> If you don't supply a `<module_name>` Kirimase will show you a list of possible modules you can add.
 
 ## Generating Application MVCs
 
@@ -62,7 +103,7 @@ Kirimase provides a powerful tool for generating new application MVCs (Model-Vie
 1. Run the following command:
 
    ```
-   bun run generate:mvc
+   bun run add:mvc
    ```
 
 2. Follow the interactive prompts to specify:
@@ -129,7 +170,7 @@ Authentication is implemented using Lucia:
 
 ## Database
 
-The project uses Drizzle ORM with PostgreSQL:
+The project uses Drizzle ORM with PostgreSQL, specifically with Vercel Postgres:
 
 1. Database schema is defined in `src/lib/db/schema/auth.ts`.
 2. Run migrations with:
@@ -140,6 +181,9 @@ The project uses Drizzle ORM with PostgreSQL:
    ```
    bun db:generate
    ```
+
+> [!NOTE]
+> You can utilise a different database provider however it will require some setup and changing of Drizzle setup files. 
 
 ## Folder Structure
 
