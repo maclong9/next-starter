@@ -2,11 +2,11 @@
 
 ## TODO
 
-- [ ] Add Search Engine Optimization 
+- [ ] Add Search Engine Optimization
 
 ## Tools
 
-### Stack 
+### Stack
 
 - Next.js
 - Drizzle Orm
@@ -47,7 +47,8 @@ This is a Next.js application built with Kirimase, utilizing various modern web 
 ### GitHub CLI
 
 1. Run the create command
-``` sh
+
+```sh
 gh repo create <project_name> --template maclong9/next-starter
 ```
 
@@ -61,6 +62,7 @@ To set up the project:
 1. Clone the repository
 
 ### Shared
+
 1. Install dependencies:
    ```
    bun install
@@ -183,7 +185,7 @@ The project uses Drizzle ORM with PostgreSQL, specifically with Vercel Postgres:
    ```
 
 > [!NOTE]
-> You can utilise a different database provider however it will require some setup and changing of Drizzle setup files. 
+> You can utilise a different database provider however it will require some setup and changing of Drizzle setup files.
 
 ## Folder Structure
 

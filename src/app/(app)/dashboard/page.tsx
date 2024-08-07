@@ -1,5 +1,11 @@
 import SignOutBtn from "@/components/auth/SignOutBtn";
 import { getUserAuth } from "@/lib/auth/utils";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "View your profile and account information",
+};
 
 export default async function Home() {
   const { session } = await getUserAuth();

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import SidebarItems from "./SidebarItems";
-import { Avatar, AvatarFallback } from "./ui/avatar";
 
 import { AuthSession, getUserAuth } from "@/lib/auth/utils";
 

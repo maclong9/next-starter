@@ -9,6 +9,12 @@ import AuthFormError from "@/components/auth/AuthFormError";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sign Up",
+  description: "Create a new account",
+};
 
 export default function SignUpPage() {
   const [state, formAction] = useFormState(signUpAction, {

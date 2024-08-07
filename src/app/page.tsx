@@ -1,9 +1,10 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/PmwTvNfrVgf
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Welcome to Your App Name",
+  description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do",
+};
 
 export default function LandingPage() {
   return (

@@ -1,5 +1,11 @@
-import UserSettings from "./UserSettings";
 import { getUserAuth } from "@/lib/auth/utils";
+import type { Metadata } from "next";
+import UserSettings from "./UserSettings";
+
+export const metadata: Metadata = {
+  title: "Account Settings",
+  description: "Manage your account settings and preferences",
+};
 
 export default async function Account() {
   const { session } = await getUserAuth();

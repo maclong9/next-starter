@@ -1,7 +1,8 @@
-import { checkAuth } from "@/lib/auth/utils";
+import Navbar from "@/components/layout/Navbar";
+import Sidebar from "@/components/layout/Sidebar";
 import { Toaster } from "@/components/ui/sonner";
-import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/Sidebar";
+import { checkAuth } from "@/lib/auth/utils";
+
 export default async function AppLayout({
   children,
 }: {
