@@ -1,9 +1,5 @@
 # Next.js Application Documentation
 
-## TODO
-
-- [ ] Add Search Engine Optimization
-
 ## Tools
 
 ### Stack
