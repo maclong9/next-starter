@@ -5,7 +5,7 @@
 ### Stack
 
 - Next.js
-- Drizzle ORM
+- Drizzle Orm
 - Vercel Postgres
 - Lucia Authentication
 - TailwindCSS
@@ -37,10 +37,232 @@
 
 ## Introduction
 
-This Next.js application, built with Kirimase, incorporates modern web development tools and practices. It features authentication, database integration, theming capabilities, and a modular structure for easy maintenance and scalability.
+This is a Next.js application built with Kirimase, utilizing various modern web development tools and practices. It includes authentication, database integration, theming capabilities, and a modular structure for easy maintenance and scalability.
 
 ## Project Setup
 
 ### GitHub CLI
 
-1. Run the create command:
+1. Run the create command
+
+```sh
+gh repo create <project_name> --template maclong9/next-starter
+```
+
+> [!TIP]
+> I personally alias this to `cna` in my `~/.zshrc` allowing me to run `cna <project_name>` whenever I need to start a new project.
+
+### Manually
+
+To set up the project:
+
+1. Clone the repository
+
+### Shared
+
+1. Install dependencies:
+   ```
+   bun install
+   ```
+2. Set up environment variables (copy `.env.example` to `.env` and fill in the values)
+3. Run the development server:
+   ```
+   bun dev
+   ```
+
+## Theming
+
+Theming is implemented using `theme-colors` for generating Tailwind CSS shades and a custom theme configuration.
+
+### Tailwind Configuration
+
+Use this section for theming according to your brand:
+
+1. Edit the `tailwind.config.ts` file to change color definitions.
+2. Update the colors in `src/app/globals.css` for styling shadcn components.
+
+### Application Themes
+
+The application supports multiple user-chosen themes in case you want your users to be able to choose their own theme, defined in `src/config/themes.ts`:
+
+1. Open `src/config/themes.ts`
+2. Modify or add themes to the `themes` array:
+
+```typescript
+export const themes: Theme[] = [
+  {
+    name: "light",
+    label: "Light",
+    description: "Bright and clear, perfect for daytime use",
+    bgClass: "bg-white",
+    contentClass: "bg-gray-100",
+    textClass: "bg-gray-800",
+  },
+  // ... add more themes as needed
+];
+```
+
+### Custom Font
+
+To apply a custom font:
+
+1. Use the `next/font` library in the root layout file (`src/app/layout.tsx`).
+2. Import and apply the font as shown in the [documentation](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
+
+## Application Configuration
+
+### Metadata and Viewport
+
+The application's metadata and viewport settings are configured in separate files:
+
+1. Open `src/config/metadata.ts` for metadata configuration:
+   - Update the `AppConfig` object with your application's details
+   - Modify the `MetadataConfig` object to customize SEO settings
+2. Open `src/config/viewport.ts` for viewport configuration:
+   - Update the `ViewportConfig` object to customize viewport settings
+
+### Robots.txt
+
+The `robots.txt` file is dynamically generated in `src/app/robots.ts`:
+
+1. Open `src/app/robots.ts`
+2. Customize the rules, sitemap, and host settings:
+
+```typescript
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: '/private/',
+      },
+      // ... add more rules as needed
+    ],
+    sitemap: `${AppConfig.url}/sitemap.xml`,
+    host: AppConfig.url,
+  }
+}
+```
+
+## Adding Modules
+
+To add additional functionality:
+
+1. Use Kirimase to add modules like Stripe (for payments) or Resend (for email):
+   ```
+   bun add:module <module_name>
+   ```
+2. Follow the prompts to select and configure the desired module.
+
+> [!NOTE]
+> If you don't supply a `<module_name>` Kirimase will show you a list of possible modules you can add.
+
+## Generating Application MVCs
+
+Kirimase provides a powerful tool for generating new application MVCs (Model-View-Controller structures). To generate a new MVC:
+
+1. Run the following command:
+
+   ```
+   bun run add:mvc
+   ```
+
+2. Follow the interactive prompts to specify:
+
+   - The name of your new resource (e.g., "Product", "User", "Order")
+   - The fields for your resource and their types
+   - Whether you want to generate CRUD operations
+   - If you want to add the resource to the navigation
+
+3. Kirimase will automatically:
+
+   - Create a new database table schema
+   - Generate API routes for CRUD operations
+   - Create a new page for listing the resources
+   - Add a form for creating and editing the resource
+   - Update the navigation (if selected)
+
+4. After generation, review the created files in:
+
+   - `src/lib/db/schema`: For the new database schema
+   - `src/lib/api`: For the generated API routes
+   - `src/app/(app)`: For the new pages and forms
+
+5. Customize the generated code as needed for your specific application requirements.
+
+6. Run database migrations to apply the new schema:
+   ```
+   bun db:generate
+   bun db:migrate
+   ```
+
+This feature allows you to quickly scaffold new parts of your application, saving time and ensuring consistency in your project structure.
+
+## Testing
+
+### Unit Testing
+
+- Write unit tests for custom functions and components not generated by Kirimase CLI or maintained by shadcn/acternity-ui.
+- Place test files in the same folder as the file being tested.
+- Use Vitest for running unit tests:
+  ```
+  bun test:unit
+  ```
+
+### End-to-End Testing
+
+- Use Playwright for end-to-end testing of critical application workflows.
+- Avoid testing generated components, actions, or pages.
+- Run e2e tests with:
+  ```
+  bun test:e2e
+  ```
+
+> [!NOTE]
+> Example tests are provided in `tests/{unit,e2e}` and `src/tests`. Review and modify these before pushing to avoid CI issues.
+
+## Authentication
+
+Authentication is implemented using Lucia:
+
+1. Sign-up and sign-in functionality is available in `src/app/(auth)/sign-up/page.tsx` and `src/app/(auth)/sign-in/page.tsx`.
+2. Authentication logic is handled in `src/lib/auth/lucia.ts` and `src/lib/auth/utils.ts`.
+3. Protected routes should use the `checkAuth` function from `src/lib/auth/utils.ts`.
+
+## Database
+
+The project uses Drizzle ORM with PostgreSQL, specifically with Vercel Postgres:
+
+1. Database schema is defined in `src/lib/db/schema/auth.ts`.
+2. Run migrations with:
+   ```
+   bun db:migrate
+   ```
+3. Generate new migrations after schema changes:
+   ```
+   bun db:generate
+   ```
+
+> [!NOTE]
+> You can utilise a different database provider however it will require some setup and changing of Drizzle setup files.
+
+## Folder Structure
+
+- `src/app`: Next.js app router pages and layouts
+- `src/components`: Reusable React components
+- `src/lib`: Utility functions, database setup, and authentication
+- `src/config`: Configuration files (e.g., navigation)
+- `public`: Static assets
+
+## Deployment
+
+1. Ensure all environment variables are set in your deployment platform.
+2. Run database migrations before deploying new versions.
+3. Use the production build command:
+   ```
+   bun build
+   ```
+4. Deploy the application to your chosen platform (e.g., Vercel, Netlify).
+
+Remember to keep your dependencies updated and regularly check for security vulnerabilities. Happy coding!
