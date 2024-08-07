@@ -1,11 +1,16 @@
 # Next.js Application Documentation
 
+## TODO
+
+- [ ] Create Media Library MVC 
+- [ ] Create Blog Post MVC
+
 ## Tools
 
 ### Stack
 
 - Next.js
-- Drizzle Orm
+- Drizzle ORM
 - Vercel Postgres
 - Lucia Authentication
 - TailwindCSS

@@ -13,3 +13,4 @@ export const defaultLinks: SidebarLink[] = [
 ];
 
 export const additionalLinks: AdditionalLinks[] = [];
+

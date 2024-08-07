@@ -1,0 +1,1 @@
+ALTER TABLE "posts" ADD COLUMN "image" varchar(256) NOT NULL;
