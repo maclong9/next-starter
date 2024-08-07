@@ -64,6 +64,14 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground prose dark:prose-invert;
+    @apply bg-background text-foreground prose dark:prose-invert max-w-none;
+
+    a {
+      @apply no-underline;
+    }
+
+    li {
+      @apply list-none;
+    }
   }
 }

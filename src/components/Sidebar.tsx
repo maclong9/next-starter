@@ -34,18 +34,18 @@ const UserDetails = ({ session }: { session: AuthSession }) => {
     <Link href="/account">
       <div className="flex items-center justify-between w-full border-t border-border pt-4 px-2">
         <div className="text-muted-foreground">
-          <p className="text-xs">{user.name ?? "John Doe"}</p>
-          <p className="text-xs font-light pr-4">
-            {user.email ?? "john@doe.com"}
+          <p>{user.name ?? "Elliot Alderson"}</p>
+          <p className="font-light pr-4">
+            {user.email ?? "elliot@fsociety.com"}
           </p>
         </div>
         <Avatar className="h-10 w-10">
           <AvatarFallback className="border-border border-2 text-muted-foreground">
             {user.name
               ? user.name
-                  ?.split(" ")
-                  .map((word) => word[0].toUpperCase())
-                  .join("")
+                ?.split(" ")
+                .map((word) => word[0].toUpperCase())
+                .join("")
               : "~"}
           </AvatarFallback>
         </Avatar>

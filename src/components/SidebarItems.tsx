@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 import { LucideIcon } from "lucide-react";
 
+import { additionalLinks, defaultLinks } from "@/config/nav";
 import { cn } from "@/lib/utils";
-import { defaultLinks, additionalLinks } from "@/config/nav";
 
 export interface SidebarLink {
   title: string;
@@ -20,13 +20,13 @@ const SidebarItems = () => {
       <SidebarLinkGroup links={defaultLinks} />
       {additionalLinks.length > 0
         ? additionalLinks.map((l) => (
-            <SidebarLinkGroup
-              links={l.links}
-              title={l.title}
-              border
-              key={l.title}
-            />
-          ))
+          <SidebarLinkGroup
+            links={l.links}
+            title={l.title}
+            border
+            key={l.title}
+          />
+        ))
         : null}
     </>
   );
@@ -48,7 +48,7 @@ const SidebarLinkGroup = ({
   return (
     <div className={border ? "border-border border-t my-8 pt-4" : ""}>
       {title ? (
-        <h4 className="px-2 mb-2 text-xs uppercase text-muted-foreground tracking-wider">
+        <h4 className="px-2 mb-2 uppercase text-muted-foreground tracking-wider">
           {title}
         </h4>
       ) : null}
@@ -72,9 +72,10 @@ const SidebarLink = ({
   return (
     <Link
       href={link.href}
-      className={`group transition-colors p-2 inline-block hover:bg-popover hover:text-primary text-muted-foreground text-xs hover:shadow rounded-md w-full${
-        active ? " text-primary font-semibold" : ""
-      }`}
+      className={cn(
+        "group transition-colors p-2 inline-block hover:bg-popover hover:text-primary text-muted-foreground hover:shadow rounded-md w-full",
+        active && "text-primary font-semibold"
+      )}
     >
       <div className="flex items-center">
         <div

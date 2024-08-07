@@ -1,4 +1,7 @@
+import aspectRatio from "@tailwindcss/aspect-ratio";
+import typography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 import { getColors } from "theme-colors";
 
 const config = {
@@ -82,7 +85,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate, aspectRatio, typography],
 } satisfies Config;
 
 export default config;

@@ -15,13 +15,13 @@ export default function LandingPage() {
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
+            className="font-medium hover:underline underline-offset-4"
             href="#features"
           >
             Features
           </Link>
           <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
+            className="font-medium hover:underline underline-offset-4"
             href="/sign-in"
           >
             Sign In
@@ -35,11 +35,11 @@ export default function LandingPage() {
               <div className="bg-neutral-100 dark:bg-neutral-800 mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square" />
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                  <h1 className="font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     The complete platform <br />
                     for building the Web
                   </h1>
-                  <p className="max-w-[600px] text-neutral-500 md:text-xl dark:text-neutral-400">
+                  <p className="max-w-[600px] text-neutral-500 dark:text-neutral-400">
                     Give your team the toolkit to stop configuring and start
                     innovating. Securely build, deploy, and scale the best web
                     experiences.
@@ -73,7 +73,7 @@ export default function LandingPage() {
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                   Faster iteration. More innovation.
                 </h2>
-                <p className="max-w-[900px] text-neutral-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-neutral-400">
+                <p className="max-w-[900px] text-neutral-500 dark:text-neutral-400">
                   The platform for rapid progress. Let your team focus on
                   shipping features instead of managing infrastructure with
                   automated CI/CD.
@@ -123,7 +123,7 @@ export default function LandingPage() {
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
                   Sign Up for Updates
                 </h2>
-                <p className="max-w-[600px] text-neutral-500 md:text-xl dark:text-neutral-400">
+                <p className="max-w-[600px] text-neutral-500 dark:text-neutral-400">
                   Stay updated with the latest product news and updates.
                 </p>
               </div>
@@ -147,14 +147,14 @@ export default function LandingPage() {
         </section>
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-neutral-500 dark:text-neutral-400">
+        <p className="text-neutral-500 dark:text-neutral-400">
           © 2024 Acme Inc. All rights reserved.
         </p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
+          <Link className="hover:underline underline-offset-4" href="#">
             Terms of Service
           </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
+          <Link className="hover:underline underline-offset-4" href="#">
             Privacy
           </Link>
         </nav>

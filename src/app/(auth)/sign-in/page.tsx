@@ -18,7 +18,7 @@ export default function SignInPage() {
 
   return (
     <main className="max-w-lg mx-auto my-4 bg-popover p-10">
-      <h1 className="text-2xl font-bold text-center">
+      <h1 className="font-bold text-center">
         Sign in to your account
       </h1>
       <AuthFormError state={state} />
