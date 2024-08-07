@@ -15,6 +15,7 @@
     "db:studio": "drizzle-kit studio",
     "db:check": "drizzle-kit check",
     "generate:mvc": "bunx kirimase@latest generate",
+    "test:unit": "vitest",
     "test:e2e": "playwright test",
     "add:shadcn": "npx shadcn-ui@latest add",
     "add:acternity": "npx @acternity/ui@latest add"
