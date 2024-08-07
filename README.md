@@ -117,7 +117,7 @@ This feature allows you to quickly scaffold new parts of your application, savin
   ```
 
 > [!NOTE]
-> There are some example tests within the `tests/{unit,e2e}` folders which show an example of basic unit and end-to-end tests. There is also an example of a component/page test within `src/app/tests` to show how to test individualcomponent or page. Make sure to remove or edit these files before pushing the code so that you don't break the continuous integration.
+> Example tests are provided in `tests/{unit,e2e}` and `src/tests`. Review and modify these before pushing to avoid CI issues.
 
 ## Authentication
 
