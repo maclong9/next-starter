@@ -55,7 +55,7 @@ export default function Modal({
               <DialogHeader className="px-5 pt-5">
                 {renderHeader()}
               </DialogHeader>
-              <div className="px-5 pb-5">{children}</div>
+              <div className="px-5 pb-5 overflow-y-scroll">{children}</div>
             </>
           )}
         </DialogContent>
@@ -65,22 +65,13 @@ export default function Modal({
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerContent className={cn(full && "h-[95vh]")}>
-        {full ? (
-          <div className="flex h-full">
-            <DrawerHeader className="w-64 p-5 border-r">
-              {renderHeader()}
-            </DrawerHeader>
-            <div className="flex-1 p-5 overflow-auto">{children}</div>
-          </div>
-        ) : (
-          <>
-            <DrawerHeader className="px-5 pt-5">
-              {renderHeader()}
-            </DrawerHeader>
-            <div className="px-5 pb-5">{children}</div>
-          </>
-        )}
+      <DrawerContent className={cn("flex flex-col", full && "h-[95vh]")}>
+        <DrawerHeader className={cn("px-5 pt-5", full && "border-b")}>
+          {renderHeader()}
+        </DrawerHeader>
+        <div className={cn("px-5 py-5", full && "flex-1 overflow-auto")}>
+          {children}
+        </div>
       </DrawerContent>
     </Drawer>
   );
