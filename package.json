@@ -37,7 +37,7 @@
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.32.2",
     "drizzle-zod": "^0.5.1",
-    "framer-motion": "^11.3.21",
+    "framer-motion": "^11.3.22",
     "lucia": "^3.2.0",
     "lucide-react": "^0.424.0",
     "nanoid": "^5.0.7",
