@@ -14,10 +14,6 @@
 10. [Development Workflow](#development-workflow)
 11. [Deployment](#deployment)
 
-## Todo
-
-- [ ] Add Responsive Modal
-
 ## Introduction
 
 This is a Next.js application built with Kirimase, utilizing various modern web development tools and practices. It includes authentication, database integration, theming capabilities, and a modular structure for easy maintenance and scalability.
