@@ -25,14 +25,15 @@
 1. [Introduction](#introduction)
 2. [Project Setup](#project-setup)
 3. [Theming](#theming)
-4. [Adding Modules](#adding-modules)
-5. [Generating Application MVCs](#generating-application-mvcs)
-6. [Testing](#testing)
-7. [Authentication](#authentication)
-8. [Database](#database)
-9. [Folder Structure](#folder-structure)
-10. [Development Workflow](#development-workflow)
-11. [Deployment](#deployment)
+4. [Application Configuration](#application-configuration)
+5. [Adding Modules](#adding-modules)
+6. [Generating Application MVCs](#generating-application-mvcs)
+7. [Testing](#testing)
+8. [Authentication](#authentication)
+9. [Database](#database)
+10. [Folder Structure](#folder-structure)
+11. [Development Workflow](#development-workflow)
+12. [Deployment](#deployment)
 
 ## Introduction
 
@@ -71,15 +72,80 @@ To set up the project:
 
 ## Theming
 
-Theming is implemented using `theme-colors` for generating Tailwind CSS shades. To modify the theme:
+Theming is implemented using `theme-colors` for generating Tailwind CSS shades and a custom theme configuration.
+
+### Tailwind Configuration
+
+Use this section for theming according to your brand:
 
 1. Edit the `tailwind.config.ts` file to change color definitions.
 2. Update the colors in `src/app/globals.css` for styling shadcn components.
+
+### Application Themes
+
+The application supports multiple user-chosen themes in case you want your users to be able to choose their own theme, defined in `src/config/themes.ts`:
+
+1. Open `src/config/themes.ts`
+2. Modify or add themes to the `themes` array:
+
+```typescript
+export const themes: Theme[] = [
+  {
+    name: "light",
+    label: "Light",
+    description: "Bright and clear, perfect for daytime use",
+    bgClass: "bg-white",
+    contentClass: "bg-gray-100",
+    textClass: "bg-gray-800",
+  },
+  // ... add more themes as needed
+];
+```
+
+3. Use these themes in your components to apply consistent styling across the application.
+
+### Custom Font
 
 To apply a custom font:
 
 1. Use the `next/font` library in the root layout file (`src/app/layout.tsx`).
 2. Import and apply the font as shown in the [documentation](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
+
+## Application Configuration
+
+### Metadata and Viewport
+
+The application's metadata and viewport settings are configured in separate files:
+
+1. Open `src/config/metadata.ts` for metadata configuration:
+   - Update the `AppConfig` object with your application's details
+   - Modify the `MetadataConfig` object to customize SEO settings
+2. Open `src/config/viewport.ts` for viewport configuration:
+   - Update the `ViewportConfig` object to customize viewport settings
+
+### Robots.txt
+
+The `robots.txt` file is dynamically generated in `src/app/robots.ts`:
+
+1. Open `src/app/robots.ts`
+2. Customize the rules, sitemap, and host settings:
+
+```typescript
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: '/private/',
+      },
+      // ... add more rules as needed
+    ],
+    sitemap: `${AppConfig.url}/sitemap.xml`,
+    host: AppConfig.url,
+  }
+}
+```
 
 ## Adding Modules
 

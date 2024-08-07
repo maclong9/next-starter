@@ -1,4 +1,4 @@
-import { Metadata, Viewport } from "next";
+import { Metadata } from "next";
 import process from "process";
 
 export const AppConfig = {
@@ -63,14 +63,4 @@ export const MetadataConfig: Metadata = {
     alternates: {
         canonical: AppConfig.url,
     },
-};
-
-export const ViewportConfig: Viewport = {
-    width: "device-width",
-    initialScale: 1,
-    colorScheme: "normal",
-    themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-        { media: "(prefers-color-scheme: dark)", color: "#000000" },
-    ],
 };

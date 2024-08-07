@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
-import { MetadataConfig, ViewportConfig } from "@/config/metadata";
+import { MetadataConfig } from "@/config/metadata";
+import { ViewportConfig } from "@/config/viewport";
 import "./globals.css";
 
 export const metadata = MetadataConfig;
