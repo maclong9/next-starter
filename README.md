@@ -102,8 +102,6 @@ export const themes: Theme[] = [
 ];
 ```
 
-3. Use these themes in your components to apply consistent styling across the application.
-
 ### Custom Font
 
 To apply a custom font:
