@@ -5,7 +5,7 @@ import { themes } from "@/config/themes";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 
-export default function ThemeButtons({ className }: { className?: string }) {
+export default function ThemeButtons() {
   const { setTheme, theme } = useTheme();
 
   return (

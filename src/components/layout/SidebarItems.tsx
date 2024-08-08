@@ -14,13 +14,13 @@ export interface SidebarLink {
   icon: LucideIcon;
 }
 
-const SidebarItems = () => {
+const SidebarItems = ({ closeSheet }: { closeSheet?: () => void }) => {
   return (
     <>
       <h4 className="px-2 mb-2 text-xs uppercase text-muted-foreground tracking-wider">
         Navigation
       </h4>
-      <SidebarLinkGroup links={defaultLinks} />
+      <SidebarLinkGroup links={defaultLinks} closeSheet={closeSheet} />
       {additionalLinks.length > 0
         ? additionalLinks.map((l) => (
           <SidebarLinkGroup
@@ -28,6 +28,7 @@ const SidebarItems = () => {
             title={l.title}
             border
             key={l.title}
+            closeSheet={closeSheet}
           />
         ))
         : null}
@@ -40,10 +41,12 @@ const SidebarLinkGroup = ({
   links,
   title,
   border,
+  closeSheet,
 }: {
   links: SidebarLink[];
   title?: string;
   border?: boolean;
+  closeSheet?: () => void;
 }) => {
   const fullPathname = usePathname();
   const pathname = "/" + fullPathname.split("/")[1];
@@ -58,19 +61,22 @@ const SidebarLinkGroup = ({
       <ul>
         {links.map((link) => (
           <li key={link.title}>
-            <SidebarLink link={link} active={pathname === link.href} />
+            <SidebarLink link={link} active={pathname === link.href} closeSheet={closeSheet} />
           </li>
         ))}
       </ul>
     </div>
   );
 };
+
 const SidebarLink = ({
   link,
   active,
+  closeSheet,
 }: {
   link: SidebarLink;
   active: boolean;
+  closeSheet?: () => void;
 }) => {
   return (
     <Link
@@ -79,6 +85,7 @@ const SidebarLink = ({
         "group transition-colors p-2 inline-block hover:bg-popover hover:text-primary text-muted-foreground hover:shadow rounded-md w-full",
         active && "text-primary font-semibold",
       )}
+      onClick={closeSheet}
     >
       <div className="flex items-center">
         <div

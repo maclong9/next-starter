@@ -3,9 +3,7 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  const authRequiredPaths = ['/dashboard', '/account']
-
-  if (authRequiredPaths.some(path => request.nextUrl.pathname.startsWith(path))) {
+  if (['/dashboard'].some(path => request.nextUrl.pathname.startsWith(path))) {
     if (!await checkAuth()) {
       return NextResponse.redirect(new URL('/sign-in', request.url))
     }
