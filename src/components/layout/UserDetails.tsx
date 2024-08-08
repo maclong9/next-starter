@@ -1,5 +1,6 @@
 "use client";
 
+import { signOutAction } from "@/lib/actions/users";
 import { AuthSession } from "@/lib/auth/utils";
 import { cn } from "@/lib/utils";
 import { LogOut, Settings } from "lucide-react";
@@ -15,23 +16,22 @@ import {
 
 export default function UserDetails({ session }: { session: AuthSession }) {
   const [isOpen, setIsOpen] = useState(false);
-
   const { user } = session.session ?? { user: null };
 
   return (
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="w-full border-t border-border pt-4"
+      className="border-t border-border pt-4 w-full"
     >
       <CollapsibleTrigger
         asChild
         className={cn(
-          "flex items-center justify-between w-full p-2 cursor-pointer bg-card hover:bg-card/50",
+          "flex items-center justify-between w-full p-3 cursor-pointer bg-card hover:bg-card/50",
           isOpen ? "rounded-t-lg" : "rounded-lg"
         )}
       >
-        <div className="flex items-center justify-between w-full p-2 cursor-pointer bg-card hover:bg-card/50">
+        <div className="flex items-center justify-between w-full p-3 cursor-pointer bg-muted/40 hover:bg-muted/30">
           <div className="text-muted-foreground">
             <p>{user?.name}</p>
             <p className="font-light pr-4">{user?.email}</p>
@@ -48,7 +48,7 @@ export default function UserDetails({ session }: { session: AuthSession }) {
       </CollapsibleTrigger>
       <CollapsibleContent
         className={cn(
-          "space-y-2 bg-card/75 p-2",
+          "space-y-2 bg-muted/40 p-2",
           isOpen ? "rounded-b-lg" : "rounded-lg"
         )}
       >
@@ -61,13 +61,16 @@ export default function UserDetails({ session }: { session: AuthSession }) {
             Settings
           </Button>
         </Link>
-        <Button
-          variant="ghost"
-          className="w-full justify-start text-destructive hover:text-red-500"
-        >
-          <LogOut className="mr-2 h-4 w-4" />
-          Sign out
-        </Button>
+        <form action={signOutAction}>
+          <Button
+            variant="ghost"
+            className="w-full justify-start text-destructive hover:text-red-500"
+            type="submit"
+          >
+            <LogOut className="mr-2 h-4 w-4" />
+            Sign out
+          </Button>
+        </form>
       </CollapsibleContent>
     </Collapsible>
   );

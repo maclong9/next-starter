@@ -17,16 +17,19 @@ export interface SidebarLink {
 const SidebarItems = () => {
   return (
     <>
+      <h4 className="px-2 mb-2 text-xs uppercase text-muted-foreground tracking-wider">
+        Navigation
+      </h4>
       <SidebarLinkGroup links={defaultLinks} />
       {additionalLinks.length > 0
         ? additionalLinks.map((l) => (
-            <SidebarLinkGroup
-              links={l.links}
-              title={l.title}
-              border
-              key={l.title}
-            />
-          ))
+          <SidebarLinkGroup
+            links={l.links}
+            title={l.title}
+            border
+            key={l.title}
+          />
+        ))
         : null}
     </>
   );
@@ -48,7 +51,7 @@ const SidebarLinkGroup = ({
   return (
     <div className={border ? "border-border border-t my-8 pt-4" : ""}>
       {title ? (
-        <h4 className="px-2 mb-2 uppercase text-muted-foreground tracking-wider">
+        <h4 className="px-2 mb-2 text-xs uppercase text-muted-foreground tracking-wider">
           {title}
         </h4>
       ) : null}

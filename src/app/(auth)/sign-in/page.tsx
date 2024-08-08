@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function SignInPage() {
   return (
-    <main className="max-w-lg mx-auto my-4 bg-popover p-10">
+    <main className="max-w-lg mx-auto my-4 bg-popover p-10 rounded-lg">
       <h1 className="font-bold text-center">Sign in to your account</h1>
       <SignInForm />
     </main>

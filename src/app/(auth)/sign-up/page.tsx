@@ -22,7 +22,7 @@ export default function SignUpPage() {
   });
 
   return (
-    <main className="max-w-lg mx-auto my-4 bg-popover p-10">
+    <main className="max-w-lg mx-auto my-4 bg-popover p-10 rounded-lg">
       <h1 className="font-bold text-center">Create an account</h1>
       <AuthFormError state={state} />
       <form action={formAction}>
