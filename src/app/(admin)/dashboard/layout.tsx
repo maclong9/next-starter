@@ -1,6 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
 import Sidebar from "@/components/layout/Sidebar";
-import { Toaster } from "@/components/ui/sonner";
 
 export default async function AppLayout({
   children,
@@ -16,7 +15,6 @@ export default async function AppLayout({
           {children}
         </main>
       </div>
-      <Toaster richColors />
     </main>
   );
 }

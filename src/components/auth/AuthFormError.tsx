@@ -1,10 +1,9 @@
+import { useToast } from "@/components/ui/use-toast";
+
 export default function AuthFormError({ state }: { state: { error: string } }) {
-  if (state.error)
-    return (
-      <div className="w-full p-4 bg-destructive rounded-lg my-4 text-destructive-foreground text-xs">
-        <h3 className="font-bold">Error</h3>
-        <p>{state.error}</p>
-      </div>
-    );
+  const { toast } = useToast();
+  console.log(state.error);
+
+
   return null;
 }

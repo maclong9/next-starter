@@ -1,11 +1,14 @@
+import { pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { z } from "zod";
-import { pgTable, timestamp, text } from "drizzle-orm/pg-core";
+
+export const roleEnum = pgEnum('role', ['user', 'editor', 'admin']);
 
 export const users = pgTable("user", {
   id: text("id").primaryKey(),
   email: text("email").notNull().unique(),
   hashedPassword: text("hashed_password").notNull(),
   name: text("name"),
+  role: roleEnum("role").notNull().default("user"),
 });
 
 export const sessions = pgTable("session", {
@@ -23,8 +26,19 @@ export const authenticationSchema = z.object({
   email: z.string().email().min(5).max(64),
   password: z
     .string()
-    .min(4, { message: "must be at least 4 characters long" })
-    .max(15, { message: "cannot be more than 15 characters long" }),
+    .min(8, { message: "must be at least 8 characters long" })
+    .regex(/[A-Z]/, { message: "must contain at least one uppercase letter" })
+    .regex(/[a-z]/, { message: "must contain at least one lowercase letter" })
+    .regex(/[0-9]/, { message: "must contain at least one number" })
+    .regex(/[^A-Za-z0-9]/, { message: "must contain at least one symbol" }),
+  confirmPassword: z.string()
+
+    .min(8, { message: "must be at least 8 characters long" })
+}).refine((values) => {
+  return values.password === values.confirmPassword;
+}, {
+  message: "Passwords must match!",
+  path: ["confirmPassword"],
 });
 
 export const updateUserSchema = z.object({

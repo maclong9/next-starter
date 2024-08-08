@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { Toaster } from "@/components/ui/toaster";
 import { MetadataConfig } from "@/config/metadata";
 import { ViewportConfig } from "@/config/viewport";
 import "./globals.css";
@@ -23,6 +24,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Toaster richColors />
       </body>
     </html>
   );

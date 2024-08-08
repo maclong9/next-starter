@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 
 import { type Cookie } from "lucia";
 
+import console from "console";
 import { UsernameAndPassword, authenticationSchema } from "../db/schema/auth";
 import { validateRequest } from "./lucia";
 
@@ -44,6 +45,7 @@ export const setAuthCookie = (cookie: Cookie) => {
 const getErrorMessage = (errors: any): string => {
   if (errors.email) return "Invalid Email";
   if (errors.password) return "Invalid Password - " + errors.password[0];
+  if (errors.confirmPassword) return "Invalid Password - " + errors.confirmPassword[0];
   return ""; // return a default error message or an empty string
 };
 
@@ -54,7 +56,9 @@ export const validateAuthFormData = (
   | { data: null; error: string } => {
   const email = formData.get("email");
   const password = formData.get("password");
-  const result = authenticationSchema.safeParse({ email, password });
+  const confirmPassword = formData.get("confirmPassword");
+  const result = authenticationSchema.safeParse({ email, password, confirmPassword });
+  console.log(result.error);
 
   if (!result.success) {
     return {

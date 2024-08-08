@@ -1,11 +1,12 @@
-import { checkAuth } from '@/lib/auth/utils'
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
+import { getUserAuth } from '@/lib/auth/utils';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   if (['/dashboard'].some(path => request.nextUrl.pathname.startsWith(path))) {
-    if (!await checkAuth()) {
-      return NextResponse.redirect(new URL('/sign-in', request.url))
+    const session = await getUserAuth();
+    if (!session) {
+      return NextResponse.redirect(new URL('/sign-in', request.url));
     }
   }
 
