@@ -1,10 +1,10 @@
 
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
 
 
 export function useBackPath(currentResource: string) {
@@ -25,7 +25,7 @@ export function BackButton({
 }) {
   const backPath = useBackPath(currentResource);
   return (
-    <Button variant={"ghost"} asChild>
+    <Button variant={"ghost"} asChild className="px-2">
       <Link href={backPath}>
         <ChevronLeftIcon />
       </Link>
