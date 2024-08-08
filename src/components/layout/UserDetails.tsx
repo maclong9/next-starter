@@ -3,6 +3,7 @@
 import { signOutAction } from "@/lib/actions/users";
 import { AuthSession } from "@/lib/auth/utils";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import { LogOut, Settings } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -46,32 +47,46 @@ export default function UserDetails({ session }: { session: AuthSession }) {
           </Avatar>
         </div>
       </CollapsibleTrigger>
-      <CollapsibleContent
-        className={cn(
-          "space-y-2 bg-muted/40 p-2",
-          isOpen ? "rounded-b-lg" : "rounded-lg"
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <CollapsibleContent
+            forceMount
+            asChild
+          >
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.1 }}
+              className={cn(
+                "space-y-2 bg-muted/40 p-2 overflow-hidden",
+                isOpen ? "rounded-b-lg" : "rounded-lg"
+              )}
+            >
+              <Link href="/account">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-muted-foreground hover:text-foreground"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Settings className="mr-2 h-4 w-4" />
+                  Settings
+                </Button>
+              </Link>
+              <form action={signOutAction}>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-destructive hover:text-red-500"
+                  type="submit"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Sign out
+                </Button>
+              </form>
+            </motion.div>
+          </CollapsibleContent>
         )}
-      >
-        <Link href="/account">
-          <Button
-            variant="ghost"
-            className="w-full justify-start text-muted-foreground hover:text-foreground"
-          >
-            <Settings className="mr-2 h-4 w-4" />
-            Settings
-          </Button>
-        </Link>
-        <form action={signOutAction}>
-          <Button
-            variant="ghost"
-            className="w-full justify-start text-destructive hover:text-red-500"
-            type="submit"
-          >
-            <LogOut className="mr-2 h-4 w-4" />
-            Sign out
-          </Button>
-        </form>
-      </CollapsibleContent>
+      </AnimatePresence>
     </Collapsible>
   );
 }
