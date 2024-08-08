@@ -1,12 +1,13 @@
 "use client";
 
+import { useClickOutside } from "@/hooks/use-click-outside";
 import { signOutAction } from "@/lib/actions/users";
 import { AuthSession } from "@/lib/auth/utils";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { LogOut, Settings } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Button } from "../ui/button";
 import {
@@ -18,12 +19,16 @@ import {
 export default function UserDetails({ session }: { session: AuthSession }) {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = session.session ?? { user: null };
+  const collapsibleRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(collapsibleRef, () => setIsOpen(false));
 
   return (
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
       className="border-t border-border pt-4 w-full"
+      ref={collapsibleRef}
     >
       <CollapsibleTrigger
         asChild
