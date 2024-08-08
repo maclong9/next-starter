@@ -1,10 +1,9 @@
-import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 import { type Cookie } from "lucia";
 
-import { validateRequest } from "./lucia";
 import { UsernameAndPassword, authenticationSchema } from "../db/schema/auth";
+import { validateRequest } from "./lucia";
 
 export type AuthSession = {
   session: {
@@ -32,7 +31,7 @@ export const getUserAuth = async (): Promise<AuthSession> => {
 
 export const checkAuth = async () => {
   const { session } = await validateRequest();
-  if (!session) redirect("/sign-in");
+  return !!session;
 };
 
 export const genericError = { error: "Error, please try again." };

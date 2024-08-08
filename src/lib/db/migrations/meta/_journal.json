@@ -29,6 +29,13 @@
       "when": 1723066777540,
       "tag": "0003_fresh_sunfire",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1723134787306,
+      "tag": "0004_violet_medusa",
+      "breakpoints": true
     }
   ]
 }
