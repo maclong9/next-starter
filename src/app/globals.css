@@ -57,6 +57,29 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  .eldritch {
+    --background: 0 0% 11%;
+    --foreground: 180 100% 95%;
+    --card: 0 0% 15%;
+    --card-foreground: 180 100% 95%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 180 100% 95%;
+    --primary: 152 90% 59%;
+    --primary-foreground: 0 0% 11%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 180 100% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 228 93% 89%;
+    --accent: 254 80% 75%;
+    --accent-foreground: 0 0% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 180 100% 95%;
+    --border: 229 24% 31%;
+    --input: 229 24% 31%;
+    --ring: 152 90% 59%;
+    --radius: 0.5rem;
+  }
 }
 
 @layer base {

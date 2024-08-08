@@ -17,7 +17,7 @@ import {
   CollapsibleTrigger,
 } from "../ui/collapsible";
 
-export default function UserDetails({ session, closeSheet }: { session: AuthSession, closeSheet: () => void }) {
+export default function UserDetails({ session, closeSheet }: { session: AuthSession, closeSheet?: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = session.session ?? { user: null };
   const collapsibleRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ export default function UserDetails({ session, closeSheet }: { session: AuthSess
 
   const handleLinkClick = () => {
     setIsOpen(false);
-    closeSheet;
+    closeSheet?.();
   };
 
   return (

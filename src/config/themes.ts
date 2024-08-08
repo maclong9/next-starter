@@ -32,4 +32,12 @@ export const themes: Theme[] = [
     contentClass: "bg-gray-100 dark:bg-gray-800",
     textClass: "bg-gray-800 dark:bg-gray-200",
   },
+  {
+    name: "eldritch",
+    label: "Eldritch",
+    description: "A dark theme inspired by Lovecraftian horror",
+    bgClass: "bg-eldritch-background",
+    contentClass: "bg-eldritch-content",
+    textClass: "bg-eldritch-text",
+  },
 ];
