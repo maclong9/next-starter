@@ -30,7 +30,7 @@ export function AccountCardFooter({
   description,
   children,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   description: string;
 }) {
   return (
