@@ -7,11 +7,11 @@ type AdditionalLinks = {
 };
 
 export const defaultLinks: SidebarLink[] = [
-  { href: "/dashboard", title: "Home", icon: HomeIcon },
+  { href: "/dashboard", title: "Dashboard", icon: HomeIcon },
 ];
 
 export const additionalLinks: AdditionalLinks[] = [];
 
 export const accountLinks: SidebarLink[] = [
-  { href: "/account", title: "Settings", icon: Settings },
+  { href: "/dashboard/account", title: "Settings", icon: Settings },
 ];
