@@ -13,7 +13,6 @@ import { AlignRight, LogOut } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
 
   return (
     <div className="md:hidden border-b mb-4 pb-2 w-full">
