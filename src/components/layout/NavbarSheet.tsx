@@ -21,7 +21,7 @@ export default function NavbarSheet({ session }: { session: AuthSession }) {
         <div className="flex-grow space-y-4 mt-8">
           <SidebarItems />
         </div>
-        <UserDetails session={session} />
+        <UserDetails session={session} closeSheet={() => setOpen(false)} />
       </SheetContent>
     </Sheet>
   )

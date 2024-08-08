@@ -1,11 +1,12 @@
 "use client";
 
+import { accountLinks } from "@/config/nav";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { signOutAction } from "@/lib/actions/users";
 import { AuthSession } from "@/lib/auth/utils";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { LogOut, Settings } from "lucide-react";
+import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
@@ -16,12 +17,17 @@ import {
   CollapsibleTrigger,
 } from "../ui/collapsible";
 
-export default function UserDetails({ session }: { session: AuthSession }) {
+export default function UserDetails({ session, closeSheet }: { session: AuthSession, closeSheet: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = session.session ?? { user: null };
   const collapsibleRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(collapsibleRef, () => setIsOpen(false));
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+    closeSheet;
+  };
 
   return (
     <Collapsible
@@ -68,16 +74,18 @@ export default function UserDetails({ session }: { session: AuthSession }) {
                 isOpen ? "rounded-b-lg" : "rounded-lg"
               )}
             >
-              <Link href="/account">
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-muted-foreground hover:text-foreground"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <Settings className="mr-2 h-4 w-4" />
-                  Settings
-                </Button>
-              </Link>
+              {accountLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-muted-foreground hover:text-foreground"
+                    onClick={handleLinkClick}
+                  >
+                    {link.icon && <link.icon className="mr-2 h-4 w-4" />}
+                    {link.title}
+                  </Button>
+                </Link>
+              ))}
               <form action={signOutAction}>
                 <Button
                   variant="ghost"
